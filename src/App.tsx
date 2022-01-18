@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { NestedValue, useForm } from "react-hook-form";
+import CoverLetter from "./components/CoverLetter";
+import DetailsForm from "./components/DetailsForm";
+
+type SkillsValues = {
+  praised: string;
+  expert: string[];
+  advanced: string[];
+  proficient: string[];
+  soft: string[];
+};
+
+export type FormValues = {
+  company: string;
+  role: string;
+  skills: NestedValue<SkillsValues>;
+  email?: string;
+  phoneNumber?: string;
+};
 
 function App() {
+  const { control, register } = useForm<FormValues>({
+    defaultValues: {
+      company: "",
+      role: "",
+      skills: {
+        praised: "",
+        expert: [],
+        advanced: [],
+        proficient: [],
+        soft: [],
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={{ textAlign: "center" }}>
+        Create the perfect Cover Letter for your next job
+      </h1>
+      <div className="container">
+        <DetailsForm control={control} register={register} />
+        <CoverLetter control={control} />
+      </div>
     </div>
   );
 }
