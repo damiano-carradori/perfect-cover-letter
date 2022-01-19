@@ -44,13 +44,26 @@ const CoverLetter: FunctionComponent<CoverLetterProps> = ({ control }) => {
   );
 
   return (
-    <div className="grid-cell">
-      <h2>Your cover letter</h2>
-      <div className="cover-letter">
-        <ReactMarkdown>{coverLetter}</ReactMarkdown>
+    <div className="py-8">
+      <h2 className="text-2xl text-zinc-600 font-bold xl:text-4xl">
+        Your cover letter
+      </h2>
+      <div className="divide-y-2 divide-solid">
+        <div className="text-xl xl:text-2xl">
+          <ReactMarkdown
+            components={{
+              p: ({ children }) => <p className="my-5">{children}</p>,
+              ul: ({ children }) => (
+                <ul className="list-disc list-inside my-5 ml-8">{children}</ul>
+              ),
+            }}
+          >
+            {coverLetter}
+          </ReactMarkdown>
+        </div>
+
+        <Footer />
       </div>
-      <hr />
-      <Footer />
     </div>
   );
 };
