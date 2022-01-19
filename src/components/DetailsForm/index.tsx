@@ -32,14 +32,19 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
   });
 
   return (
-    <div className="grid-cell">
-      <h2>Fill in the details</h2>
-      <fieldset>
-        <legend>Position details:</legend>
+    <div className="py-8 lg:basis-1/3 shrink-0">
+      <h2 className="text-2xl text-zinc-600 font-bold xl:text-4xl">
+        Fill in the details
+      </h2>
+      <fieldset className="rounded-md px-4 py-6 mt-6 bg-slate-100">
+        <legend className="font-bold rounded-md bg-white px-3 py-1">
+          Position details:
+        </legend>
 
         <label>
           Role:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             placeholder="Super Company Manager"
             {...register("role", { value: "" })}
@@ -51,6 +56,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         <label>
           Company:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             placeholder="Beautiful Company"
             {...register("company")}
@@ -58,14 +64,15 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         </label>
       </fieldset>
 
-      <br />
-
-      <fieldset>
-        <legend>Skills :</legend>
+      <fieldset className="rounded-md px-4 py-6 mt-6 bg-slate-100">
+        <legend className="font-bold rounded-md bg-white px-3 py-1">
+          Skills :
+        </legend>
 
         <label>
           Praised as:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             placeholder="proactive"
             {...register("skills.praised")}
@@ -77,6 +84,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         <label>
           Expert in:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === "Tab") {
@@ -98,7 +106,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
               }
             }}
           />
-          <div className="skills-container">
+          <div className="flex flex-wrap my-3 space-x-4">
             {skillsExpert.field.value.map((skill: string) => (
               <Chip
                 key={skill}
@@ -116,6 +124,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         <label>
           Advanced knowledge of:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === "Tab") {
@@ -137,7 +146,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
               }
             }}
           />
-          <div className="skills-container">
+          <div className="flex flex-wrap my-3 space-x-4">
             {skillsAdvanced.field.value.map((skill: string, pos: number) => (
               <Chip
                 key={`${pos}_${skill}`}
@@ -157,6 +166,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         <label>
           Proficient in:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === "Tab") {
@@ -178,7 +188,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
               }
             }}
           />
-          <div className="skills-container">
+          <div className="flex flex-wrap my-3 space-x-4">
             {skillsProficient.field.value.map((skill: string) => (
               <Chip
                 key={skill}
@@ -198,6 +208,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         <label>
           Soft skills:
           <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
             type="text"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === "Tab") {
@@ -219,7 +230,7 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
               }
             }}
           />
-          <div className="skills-container">
+          <div className="flex flex-wrap my-3 space-x-4">
             {skillsSoft.field.value.map((skill: string) => (
               <Chip
                 key={skill}
@@ -235,18 +246,26 @@ const DetailsForm: FunctionComponent<DetailsFormProps> = ({
         </label>
       </fieldset>
 
-      <br />
-
-      <fieldset>
-        <legend>Contact details:</legend>
+      <fieldset className="rounded-md px-4 py-6 mt-6 bg-slate-100">
+        <legend className="font-bold rounded-md bg-white px-3 py-1">
+          Contact details:
+        </legend>
         <label>
           Phone Number:
-          <input type="tel" {...register("phoneNumber")} />
+          <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
+            type="tel"
+            {...register("phoneNumber")}
+          />
         </label>
         <br />
         <label>
           Email:
-          <input type="email" {...register("email")} />
+          <input
+            className="block w-full mt-2 px-5 py-3 rounded-md border-2 border-solid border-slate-200 outline-green-400 caret-green-500"
+            type="email"
+            {...register("email")}
+          />
         </label>
       </fieldset>
     </div>
